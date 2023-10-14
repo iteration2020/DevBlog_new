@@ -1,0 +1,17 @@
+pip==23.2.1
+django==4.2.6
+django-contrib-comments==2.2.0
+pymysql==1.1.0
+crispy-bootstrap4==2022.1
+cryptography==41.0.4
+django-bootstrap4==23.2
+django-boundfield-renderer==1.4
+django-crispy-bootstrap==0.1.1.1
+django-crispy-forms==2.0
+django-crispy-forms-fancy-formsets==0.1
+django-crispy-forms-ng==2.0.0
+django-crispy-formset-modal==0.1
+django-crispy-views==1.0.1
+django-filter==23.3
+django-google-translate==1.1
+Pillow==10.0.1

@@ -1,0 +1,18 @@
+services:
+  pythonapp:
+   build: web/
+   command: sh -c "sleep 10s; python3 ./manage.py runserver 0.0.0.0:8000"
+   depends_on:
+     - mysql
+   ports:
+     - '8000:8000'
+   expose:
+     - '8000'
+  mysql:
+    build: db/
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'devblog'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '4000:4000'
