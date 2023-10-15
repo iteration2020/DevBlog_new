@@ -1,0 +1,51 @@
+ body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-image: url("https://sun9-77.userapi.com/c10239/u72344697/-6/w_fab5277f.jpg");
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 3px solid #ccc;
+            border-radius: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }

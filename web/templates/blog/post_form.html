@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Новая запись</legend>
+
+                <div class="form-group">
+                  {{ form.title.label_tag }}
+                  <input type="text" class="form-control {% if form.title.errors %}is-invalid{% endif %}" id="id_title"
+                    name="title" value='{{ form.title.value|default:"" }}'>
+                  {% if form.title.errors %}
+                  <div class="invalid-feedback">{{ form.title.errors }}</div>
+                  {% endif %}
+                </div>
+
+                <div class="form-group">
+                  {{ form.content.label_tag }}
+                  <textarea type="text" class="form-control {% if form.content.errors %}is-invalid{% endif %}" id="id_content"
+                    name="content" cols="40" rows="10">{{ form.content.value|default:"" }}</textarea>
+                  {% if form.content.errors %}
+                  <div class="invalid-feedback">{{ form.content.errors }}</div>
+                  {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

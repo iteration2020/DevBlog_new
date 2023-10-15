@@ -4,6 +4,8 @@ FROM python:latest
 ENV PYTHONDONTWRYTEBYTECODE 1
 ENV PYTHOUNBEFFERED 1
 
+WORKDIR /web
+
 RUN pip install --upgrade pip
 #Необходимые пакеты для установки в виртуальную среду докера
 COPY DevBlog_new/requrements.txt .
