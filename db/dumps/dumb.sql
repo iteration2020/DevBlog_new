@@ -376,7 +376,7 @@ CREATE TABLE `users_profile` (
 
 LOCK TABLES `users_profile` WRITE;
 /*!40000 ALTER TABLE `users_profile` DISABLE KEYS */;
-INSERT INTO `users_profile` VALUES (1,'media/default.jpg',2),(2,'media/default.jpg',3),(3,'profile_pics/qr_2.png',4),(4,'profile_pics/wKFiFjgFAUs.jpg',5);
+INSERT INTO `users_profile` VALUES (1,'default.jpg',2),(2,'default.jpg',3),(3,'profile_pics/qr_2.png',4),(4,'profile_pics/wKFiFjgFAUs.jpg',5);
 /*!40000 ALTER TABLE `users_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
