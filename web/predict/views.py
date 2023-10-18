@@ -42,6 +42,7 @@ def input_data(request):
 
 
 def prediction(request,current_datetime):
+    current_datetime = datetime.strptime(current_datetime, "%Y-%m-%d %H:%M:%S.%f")
     model = joblib.load('web/predict/model.pkl')
     query = "SELECT Age,Cholesterol,BP,Sex, Na_to_K FROM predict_input WHERE datestamp = %s"
     cursor.execute(query, current_datetime)
