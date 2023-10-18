@@ -41,7 +41,7 @@
                   <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" style="width:35px;height:35px" >
 
               {% else %}
-
+                  <div style="display:inline;" id="google_translate_element"></div>
                 <a class="nav-item nav-link" data-toggle="modal" data-target="#loginModal">Вход в котячий аккаунт</a>
                 <a class="nav-item nav-link" href="{% url 'register' %}">Регистрация</a>
               {% endif %}
@@ -88,7 +88,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript">
     </script>
-
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "{{language}}",
+            layout: google.translate.TranslateElement.InlineLayout.{% if type == 'vertical' %}VERTICAL{% elif type == "horizontal" %}HORIZONTAL{% else %}SIMPLE{% endif %},
+          },
+          "google_translate_element"
+        );
+      }
+    </script>
     <script
       type="text/javascript"
       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
