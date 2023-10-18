@@ -13,16 +13,16 @@
      <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
     {% if title %}
-        <title>Блог клуба {{ title }}</title>
+        <title>Блог милых котят {{ title }}</title>
     {% else %}
-        <title>Блог клуба Python Bytes</title>
+        <title>Блог котят о питоне</title>
     {% endif %}
 </head>
 <body>
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-blue fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}"><i class='bx bxs-rocket bx-tada-hover'></i> Python Bytes</a>
+          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}"><i class='bx bxs-rocket bx-tada-hover'></i> Блог котят</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
@@ -78,7 +78,7 @@
     </main>
     <!-- Футер закреплен внизу, независимо от количества постов на странице -->
     <footer class="text-center bg-dark">
-      <p><a href="{% url 'blog-home' %}">© Ребяза из ПУОР22-1м</a></p>
+      <p><a href="{% url 'blog-home' %}">© Ребята из ПУОР22-1м</a></p>
     </footer>
 
     <!-- Дополнительные скрипты JavaScript -->
