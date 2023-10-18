@@ -3,5 +3,5 @@ from .views import input_data, prediction
 
 urlpatterns = [
     path('input/', input_data, name='input_data'),
-    path('prediction/', prediction, name='prediction'),
+    path('prediction/<datetime:current_datetime>/', prediction, name='prediction'),
 ]
