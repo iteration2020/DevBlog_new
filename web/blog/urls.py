@@ -7,9 +7,9 @@ from .views import (
     PostUpdateView,
     PostDeleteView,
     UserPostListView
-
 )
 from . import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

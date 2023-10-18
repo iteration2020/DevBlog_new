@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_bootstrap4',
-    'google_translate'
+    'google_translate',
+    'predict.apps.PredictionConfig'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
