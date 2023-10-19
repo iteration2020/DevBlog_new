@@ -60,5 +60,5 @@ def prediction(request, current_datetime):
     connection.commit()
     predict = DRUG_SCHEMAS.get(predict)
     re = {'predict': predict}
-    request.session['predict'] = predict
+    request.session['predict'] = re
     return render(request, 'predict/prediction.html', re)
