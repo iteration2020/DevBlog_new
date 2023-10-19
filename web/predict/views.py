@@ -7,6 +7,7 @@ import pandas as pd
 from datetime import datetime
 from DevBlog_new.settings import DATABASES
 from sklearn.ensemble import GradientBoostingClassifier
+import pickle
 
 # Словарь соответствия
 SEX_MAPPING = {'M': 1, 'F': 2}
@@ -43,20 +44,21 @@ def input_data(request):
     return render(request, 'predict/input_data.html', {'form': form})
 
 
-def prediction(request,current_datetime):
-    GBC = GradientBoostingClassifier(n_estimators=500, max_depth=100)
-    GBC = joblib.load('predict/model.pkl')
+def prediction(request, current_datetime):
+    with open('predict/GBC.pkl', 'rb') as file:
+        GBC = pickle.load(file)
     query = "SELECT Age,Cholesterol,BP,Sex, Na_to_K FROM predict_input WHERE datestamp = %s"
     cursor.execute(query, current_datetime)
     result = cursor.fetchone()
     if result is not None:
-        age, cholesterol, bp, sex, na_to_k = result
-    value_pr = pd.DataFrame([[age, sex, bp, cholesterol, na_to_k]])
+        Age, Cholesterol, BP, Sex, Na_to_K = result
+    value_pr = pd.DataFrame([[Age, Sex, BP, Cholesterol, Na_to_K]], columns = ['Age','Sex','BP','Cholesterol','Na_to_K'])
     predict = GBC.predict(value_pr)
     predict = predict[0]
     query = "UPDATE predict_input SET Result = %s WHERE datestamp = %s"
     cursor.execute(query, (predict, current_datetime))
     connection.commit()
     predict = DRUG_SCHEMAS.get(predict)
+    re = {'predict': predict}
     request.session['predict'] = predict
-    return render(request, 'predict/prediction.html', predict)
+    return render(request, 'predict/prediction.html', re)
