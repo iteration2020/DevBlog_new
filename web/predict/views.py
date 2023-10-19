@@ -3,8 +3,10 @@ from .forms import InputDataForm
 from .models import InputData
 import joblib
 import pymysql
+import pandas as pd
 from datetime import datetime
 from DevBlog_new.settings import DATABASES
+from sklearn.ensemble import GradientBoostingClassifier
 
 # Словарь соответствия
 SEX_MAPPING = {'M': 1, 'F': 2}
@@ -23,7 +25,7 @@ def input_data(request):
     if request.method == 'POST':
         form = InputDataForm(request.POST)
         if form.is_valid():
-            current_datetime = datetime.now()
+            current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             age = form.cleaned_data['age']
             sex = form.cleaned_data['sex']
             bp = form.cleaned_data['bp']
@@ -42,14 +44,16 @@ def input_data(request):
 
 
 def prediction(request,current_datetime):
-    current_datetime = datetime.strptime(current_datetime, "%Y-%m-%d %H:%M:%S.%f")
-    model = joblib.load('web/predict/model.pkl')
+    GBC = GradientBoostingClassifier(n_estimators=500, max_depth=100)
+    GBC = joblib.load('predict/model.pkl')
     query = "SELECT Age,Cholesterol,BP,Sex, Na_to_K FROM predict_input WHERE datestamp = %s"
     cursor.execute(query, current_datetime)
     result = cursor.fetchone()
-    age, sex, bp, cholesterol, na_to_k = result
-    data = [[age, sex, bp, cholesterol, na_to_k]]
-    predict = model.predict(data)
+    if result is not None:
+        age, cholesterol, bp, sex, na_to_k = result
+    value_pr = pd.DataFrame([[age, sex, bp, cholesterol, na_to_k]])
+    predict = GBC.predict(value_pr)
+    predict = predict[0]
     query = "UPDATE predict_input SET Result = %s WHERE datestamp = %s"
     cursor.execute(query, (predict, current_datetime))
     connection.commit()
