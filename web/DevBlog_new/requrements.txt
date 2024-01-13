@@ -1,4 +1,6 @@
 pip==23.2.1
+importlib-metadata==4.12.0
+setuptools==69.0.3
 django==4.2.6
 django-contrib-comments==2.2.0
 pymysql==1.1.0

@@ -389,4 +389,17 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+DROP TABLE IF EXISTS `predict_input`
+
+CREATE TABLE `predict_input`
+(
+    Age         int      null,
+    Sex         int      null,
+    BP          int      null,
+    Cholesterol int      null,
+    Result      int      null,
+    Na_to_K     int      null,
+    datestamp   datetime null
+);
+
 -- Dump completed on 2023-10-15 13:29:03

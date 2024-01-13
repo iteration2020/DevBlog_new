@@ -1,3 +1,4 @@
+version: '3.7'
 services:
   web:
    build: web/
@@ -7,8 +8,10 @@ services:
      - mydb
    ports:
      - '8000:8000'
+     - '5000:5000'
    expose:
      - '8000'
+     - '5000'
   mydb:
     build: db/
     restart: always
